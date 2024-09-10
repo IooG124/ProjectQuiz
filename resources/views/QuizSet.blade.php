@@ -23,74 +23,87 @@
               </div>
         </div>
     </div>
-    <div class="container mx-auto p-8 rounded-lg shadow-lg bg-white mt-40 ">
-      <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-        <div class="p-4 bg-white rounded-lg shadow-lg col-span-1 md:col-span-1">
+    <div class="container w-1/2  mx-auto p-8 rounded-lg shadow-lg bg-white mt-40 mb-20 ">
+      <div class="mx-auto">
+        <div class="p-2 bg-white rounded-lg w-3xl ">
           <h2 class="text-xl font-bold mb-4">Atur Detail Quizz</h2>
-          <form id="quizzForm" method="POST" action="/b" enctype="multipart/form-data">
+          <form id="quizzForm" method="POST" action="{{ route('quiz.set.upload') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="nama" class="block text-gray-700 font-bold mb-2">Nama Quizz</label>
-                <input type="text" id="nama" name="nama_quizz" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Quizz Belum Berjudul" required>
-                <div id="namaError" class="hidden text-red-500 text-sm mt-1">Nama harus diisi!</div>
+                <input type="text" id="nama" name="nama_quizz" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Quizz belum berjudul. . .">
+                  @error('nama_quizz')
+                    <span class="text-red-600 text-sm italic">Nama quiz wajib di isi</span>
+                  @enderror
             </div>
             <div class="mb-4">
                 <label for="mataPelajaran" class="block text-gray-700 font-bold mb-2">Mata Pelajaran</label>
-                <select id="mataPelajaran" name="mata_pelajaran" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                <select id="mataPelajaran" name="mata_pelajaran" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
                     <option value="">Pilih Mata Pelajaran</option>
                     <option value="Matematika">Matematika</option>
                     <option value="Bahasa Indonesia">Bahasa Indonesia</option>
                     <option value="IPA">IPA</option>
                     <option value="Pengetahuan Umum">Pengetahuan Umum</option>
                 </select>
-                <div id="mataPelajaranError" class="hidden text-red-500 text-sm mt-1">Mata Pelajaran harus dipilih!</div>
+                @error('mata_pelajaran')
+                    <span class="text-red-600 text-sm italic">Pilih mata pelajaran</span>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="kelas" class="block text-gray-700 font-bold mb-2">Kelas</label>
-                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
                     <option value="">Pilih Kelas</option>
                     <option value="VII">Kelas VII</option>
                     <option value="VIII">Kelas VIII</option>
                     <option value="IX">Kelas IX</option>
                 </select>
-                <div id="kelasError" class="hidden text-red-500 text-sm mt-1">Kelas harus dipilih!</div>
+                @error('kelas')
+                    <span class="text-red-600 text-sm italic">Pilih tingkatan kelas</span>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="bahasa" class="block text-gray-700 font-bold mb-2">Bahasa</label>
-                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
                     <option value="">Pilih Bahasa</option>
                     <option value="Indonesia">Indonesia</option>
                     <option value="English">English</option>
                 </select>
-                <div id="bahasaError" class="hidden text-red-500 text-sm mt-1">Bahasa harus dipilih!</div>
+                @error('bahasa')
+                    <span class="text-red-600 text-sm italic">Pilih bahasa</span>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="visibilitas" class="block text-gray-700 font-bold mb-2">Visibilitas</label>
-                <select id="visibilitas" name="visibilitas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                <select id="visibilitas" name="visibilitas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
                     <option value="">Pilih Visibilitas</option>
                     <option value="Hanya Saya">Hanya Saya</option>
                     <option value="Terlihat Oleh Publik">Terlihat Oleh Publik</option>
                 </select>
-                <div id="visibilitasError" class="hidden text-red-500 text-sm mt-1">Visibilitas harus dipilih!</div>
+                @error('nama_quizz')
+                    <span class="text-red-600 text-sm italic">Pilih visibilitas</span>
+                 @enderror
             </div>
-            <div class="p-4 bg-white rounded-lg shadow-lg col-span-1 md:col-span-1 flex flex-col">
-                <div class="mb-4">
+            <div class="p-4 bg-white rounded-lg shadow-lg col-span-1 md:col-span-1 cols-end ">
+                <div class="mb-2">
                     <label for="imageInput" class="block text-gray-700 font-bold mb-2">Gambar Profil</label>
                     <div class="flex flex-col items-center justify-center relative w-full h-80 border border-gray-300 rounded-lg">
-                        <img src="./asset/white.png" alt="Gambar Profil" id="previewImage" class="rounded-full w-full h-full object-cover" style="display: none;">
+                        <img src="./asset/white.png" alt="Gambar Profil" id="previewImage" class=" w-full h-full object-cover aspect-video" style="display: none;">
                         <div id="imageError" class="hidden text-red-500 text-sm mt-1">Harap pilih gambar!</div>
-                        <input type="file" name="gambar_profil" id="imageInput" accept="image/*" class="hidden" required>
+                        <input type="file" name="gambar_profil" id="imageInput" accept="image/*" class="hidden" >
                     </div>
-                    <div class="mt-14 justify-end flex">
-                        <button id="uploadButton" type="button" class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded mr-4">
-                            Upload Gambar
-                        </button>
-                        <button id="submitButton" type="submit" class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded">
-                            Simpan
-                        </button>
-                    </div>
+                  @error('gambar_profil')
+                    <span class="text-red-600 text-sm italic">Cover quiz wajib diisi!</span>
+                  @enderror
                 </div>
             </div>
+            <div class="mt-8 justify-end flex">
+              <button id="uploadButton" type="button" class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded mr-4">
+                  Upload Gambar
+              </button>
+              <button id="submitButton" type="submit" class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded">
+                  Simpan
+              </button>
+          </div>
         </form>
       </div>
       </div>
