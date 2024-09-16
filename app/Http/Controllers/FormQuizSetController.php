@@ -20,7 +20,7 @@ class FormQuizSetController extends Controller
             'kelas' => 'required',
             'bahasa' => 'required',
             'visibilitas' => 'required',
-            'gambar_profil' => 'required|image|mimes:png,jpg,jpeg,svg|size:1024|dimensions:ratio=16/9'
+            'gambar_profil' => 'required|image|mimes:png,jpg,jpeg,svg|size:2048|dimensions:ratio=16/9'
 
         ]);
     }

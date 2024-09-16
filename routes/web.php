@@ -28,8 +28,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', Controllers\DashboardController::class);
+Route::get('/', Controllers\DashboardController::class)->name('dashboard');
 
+Route::get('/createquiz', [Controllers\FormQuizSetController::class, 'index'])->name('create.quiz');
+Route::post('/createquiz', [Controllers\FormQuizSetController::class,'store'])->name('create.quiz.upload');
 
-Route::get('/quizset', [Controllers\FormQuizSetController::class, 'index'])->name('quiz.set');
-Route::post('/quizset', [Controllers\FormQuizSetController::class,'store'])->name('quiz.set.upload');
+// Route::get('/createquestions')

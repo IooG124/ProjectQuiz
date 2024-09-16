@@ -8,11 +8,13 @@
     <title>Quizz</title>
 </head>
 <body class="bg-teal-700">
-    <div class="navbar bg-teal-700 p-6 top-0 left-0 w-full z-10 shadow-lg">
-        <div class="container flex">
-            <h1 class="text-4xl font-bold ml-10 text-white align-center items-center py-2">Quizi</h1>
-            <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="size-16 object-cover aspect-square align-center items-center py-2">
-        </div>
+    <div class="navbar sticky bg-teal-700 p-6 top-0 left-0 w-full z-10 shadow-lg">
+        <a href="{{ route('dashboard') }}">
+            <div class="container flex">
+                <h1 class="text-4xl font-bold ml-10 text-white align-center items-center py-2 pr-2">Quizi</h1>
+                <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="size-16 object-cover aspect-square align-center items-center py-2">
+            </div>
+        </a>
     </div>
     <div class="container mx-auto p-4 rounded-lg mt-10 ">
         <div class="flex flex-row w-full">
@@ -52,7 +54,7 @@
                     <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="block size-40 aspect-auto object-cover mx-auto">
                 </div>
                 <div class="rounded-lg mt-5 w-full flex justify-center">
-                    <a href="" class="block rounded-lg p-3 w-3/4 h-full text-center font-bold text-xl bg-white text-green-500 shadow-sm border-4 border-green-500 hover:bg-green-500 hover:text-white transition-all duration-250 ease-in">
+                    <a href="{{ route('create.quiz') }}" class="block rounded-lg p-3 w-3/4 h-full text-center font-bold text-xl bg-white text-green-500 shadow-sm border-4 border-green-500 hover:bg-green-500 hover:text-white transition-all duration-250 ease-in">
                         Buat Quiz Baru!</a>
                 </div>
             </div>

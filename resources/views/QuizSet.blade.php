@@ -12,26 +12,27 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-teal-700 font-inter">
-    <div class="navbar bg-teal-700 p-6 fixed top-0 left-0 w-full z-10 h-24 shadow-lg">
+    <div class="navbar sticky bg-teal-700 p-6 top-0 left-0 w-full z-10 shadow-lg">
         <div class="container mx-auto flex  items-center">
-            <div class="flex items-center mb-6">
-                <a href="#" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 text-xl rounded inline-flex items-center">
+            <div class="flex items-center">
+                <a href="{{ route('dashboard') }}" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 text-xl rounded inline-flex items-center">
                   <svg class="h-8 w-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                   Kembali
                 </a>
-                <h1 class="text-2xl font-bold ml-7 text-white">Pengaturan Quizz</h1>
+                <h1 class="text-2xl font-bold ml-7 mr-2 text-white">Pengaturan Quizz</h1>
+                <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="size-16 object-cover aspect-square align-center items-center py-2">
               </div>
         </div>
     </div>
-    <div class="container w-1/2  mx-auto p-8 rounded-lg shadow-lg bg-white mt-40 mb-20 ">
+    <div class="container w-1/2  mx-auto p-8 rounded-lg shadow-lg bg-white mt-10 mb-20 ">
       <div class="mx-auto">
         <div class="p-2 bg-white rounded-lg w-3xl ">
           <h2 class="text-xl font-bold mb-4">Atur Detail Quizz</h2>
-          <form id="quizzForm" method="POST" action="{{ route('quiz.set.upload') }}" enctype="multipart/form-data">
+          <form id="quizzForm" method="POST" action="{{ route('create.quiz.upload') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="nama" class="block text-gray-700 font-bold mb-2">Nama Quizz</label>
-                <input type="text" id="nama" name="nama_quizz" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Quizz belum berjudul. . .">
+                <input type="text" id="nama" name="nama_quizz" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{ old('nama_quizz') }}" placeholder="Quizz belum berjudul. . .">
                   @error('nama_quizz')
                     <span class="text-red-600 text-sm italic">Nama quiz wajib di isi</span>
                   @enderror
@@ -79,7 +80,7 @@
                     <option value="Hanya Saya">Hanya Saya</option>
                     <option value="Terlihat Oleh Publik">Terlihat Oleh Publik</option>
                 </select>
-                @error('nama_quizz')
+                @error('visibilitas')
                     <span class="text-red-600 text-sm italic">Pilih visibilitas</span>
                  @enderror
             </div>
@@ -88,9 +89,9 @@
                     <label for="imageInput" class="block text-gray-700 font-bold mb-2">Gambar Profil</label>
                     <div class="flex flex-col items-center justify-center relative w-full h-80 border border-gray-300 rounded-lg">
                         <img src="./asset/white.png" alt="Gambar Profil" id="previewImage" class=" w-full h-full object-cover aspect-video" style="display: none;">
-                        <div id="imageError" class="hidden text-red-500 text-sm mt-1">Harap pilih gambar!</div>
                         <input type="file" name="gambar_profil" id="imageInput" accept="image/*" class="hidden" >
                     </div>
+                    <span class="text-xs block text-gray-400">*maksimal ukuran file 5 Mb (png, jpg, jpeg, svg)</span>
                   @error('gambar_profil')
                     <span class="text-red-600 text-sm italic">Cover quiz wajib diisi!</span>
                   @enderror
