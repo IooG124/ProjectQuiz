@@ -12,23 +12,23 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-teal-700 font-inter">
-    <div class="navbar sticky bg-teal-700 p-6 top-0 left-0 w-full z-10 shadow-lg">
+    <x-navbar>
         <div class="container mx-auto flex  items-center">
             <div class="flex items-center">
-                <a href="{{ route('dashboard') }}" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 text-xl rounded inline-flex items-center">
-                  <svg class="h-8 w-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                  Kembali
-                </a>
-                <h1 class="text-2xl font-bold ml-7 mr-2 text-white">Pengaturan Quizz</h1>
+                <h1 class="text-2xl font-bold ml-7 mr-2 text-white">{{ $title }}</h1>
                 <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="size-16 object-cover aspect-square align-center items-center py-2">
               </div>
         </div>
-    </div>
+    </x-navbar>
     <div class="container w-1/2  mx-auto p-8 rounded-lg shadow-lg bg-white mt-10 mb-20 ">
       <div class="mx-auto">
+        <a href="{{ route('dashboard') }}" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 mb-5 text-xl rounded inline-flex items-center">
+          <svg class="h-8 w-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          Kembali
+        </a>
         <div class="p-2 bg-white rounded-lg w-3xl ">
-          <h2 class="text-xl font-bold mb-4">Atur Detail Quizz</h2>
-          <form id="quizzForm" method="POST" action="{{ route('create.quiz.upload') }}" enctype="multipart/form-data">
+          <h2 class="text-4xl font-bold mb-4">Atur Detail Quizz</h2>
+          <form id="quizzForm" method="POST" action="{{ route('create.quiz.question') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="nama" class="block text-gray-700 font-bold mb-2">Nama Quizz</label>
@@ -39,24 +39,25 @@
             </div>
             <div class="mb-4">
                 <label for="mataPelajaran" class="block text-gray-700 font-bold mb-2">Mata Pelajaran</label>
-                <select id="mataPelajaran" name="mata_pelajaran" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-                    <option value="">Pilih Mata Pelajaran</option>
-                    <option value="Matematika">Matematika</option>
-                    <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-                    <option value="IPA">IPA</option>
-                    <option value="Pengetahuan Umum">Pengetahuan Umum</option>
-                </select>
+                <select id="mataPelajaran" name="mata_pelajaran" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <option value="">Pilih Mata Pelajaran</option>
+                  <option value="Matematika" {{ old('mata_pelajaran') == 'Matematika' ? 'selected' : '' }}>Matematika</option>
+                  <option value="Bahasa Indonesia" {{ old('mata_pelajaran') == 'Bahasa Indonesia' ? 'selected' : '' }}>Bahasa Indonesia</option>
+                  <option value="IPA" {{ old('mata_pelajaran') == 'IPA' ? 'selected' : '' }}>IPA</option>
+                  <option value="Pengetahuan Umum" {{ old('mata_pelajaran') == 'Pengetahuan Umum' ? 'selected' : '' }}>Pengetahuan Umum</option>
+              </select>
+              
                 @error('mata_pelajaran')
                     <span class="text-red-600 text-sm italic">Pilih mata pelajaran</span>
                 @enderror
             </div>
             <div class="mb-4">
                 <label for="kelas" class="block text-gray-700 font-bold mb-2">Kelas</label>
-                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-                    <option value="">Pilih Kelas</option>
-                    <option value="VII">Kelas VII</option>
-                    <option value="VIII">Kelas VIII</option>
-                    <option value="IX">Kelas IX</option>
+                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <option value="">Pilih Kelas</option>
+                  <option value="VII" {{ old('kelas') == 'VII' ? 'selected' : '' }}>Kelas VII</option>
+                  <option value="VIII" {{ old('kelas') == 'VIII' ? 'selected' : '' }}>Kelas VIII</option>
+                  <option value="IX" {{ old('kelas') == 'IX' ? 'selected' : '' }}>Kelas IX</option>
                 </select>
                 @error('kelas')
                     <span class="text-red-600 text-sm italic">Pilih tingkatan kelas</span>
@@ -64,36 +65,26 @@
             </div>
             <div class="mb-4">
                 <label for="bahasa" class="block text-gray-700 font-bold mb-2">Bahasa</label>
-                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-                    <option value="">Pilih Bahasa</option>
-                    <option value="Indonesia">Indonesia</option>
-                    <option value="English">English</option>
-                </select>
+                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <option value="">Pilih Bahasa</option>
+                  <option value="Indonesia" {{ old('bahasa') == 'Indonesia' ? 'selected' : '' }}>Indonesia</option>
+                  <option value="English" {{ old('bahasa') == 'English' ? 'selected' : '' }}>English</option>
+              </select>              
                 @error('bahasa')
                     <span class="text-red-600 text-sm italic">Pilih bahasa</span>
                 @enderror
             </div>
-            <div class="mb-4">
-                <label for="visibilitas" class="block text-gray-700 font-bold mb-2">Visibilitas</label>
-                <select id="visibilitas" name="visibilitas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-                    <option value="">Pilih Visibilitas</option>
-                    <option value="Hanya Saya">Hanya Saya</option>
-                    <option value="Terlihat Oleh Publik">Terlihat Oleh Publik</option>
-                </select>
-                @error('visibilitas')
-                    <span class="text-red-600 text-sm italic">Pilih visibilitas</span>
-                 @enderror
-            </div>
+            
             <div class="p-4 bg-white rounded-lg shadow-lg col-span-1 md:col-span-1 cols-end ">
                 <div class="mb-2">
-                    <label for="imageInput" class="block text-gray-700 font-bold mb-2">Gambar Profil</label>
+                    <label for="imageInput" class="block text-gray-700 font-bold mb-5 ">Gambar Profil</label>
                     <div class="flex flex-col items-center justify-center relative w-full h-80 border border-gray-300 rounded-lg">
                         <img src="./asset/white.png" alt="Gambar Profil" id="previewImage" class=" w-full h-full object-cover aspect-video" style="display: none;">
                         <input type="file" name="gambar_profil" id="imageInput" accept="image/*" class="hidden" >
                     </div>
-                    <span class="text-xs block text-gray-400">*maksimal ukuran file 5 Mb (png, jpg, jpeg, svg)</span>
+                    <span class="text-xs block mt-2 text-gray-400">*maksimal ukuran file 5 Mb (png, jpg, jpeg, svg)</span>
                   @error('gambar_profil')
-                    <span class="text-red-600 text-sm italic">Cover quiz wajib diisi!</span>
+                    <span class="text-red-600 text-sm italic">{{ $message }}</span>
                   @enderror
                 </div>
             </div>

@@ -8,6 +8,9 @@ export default {
   ],
   
   theme: {
+    // fontSize:{
+    //   xxs: '8px',
+    // },
     extend: {
       fontFamily: {
         'Urbanist': ['Urbanist', 'sans-serif']

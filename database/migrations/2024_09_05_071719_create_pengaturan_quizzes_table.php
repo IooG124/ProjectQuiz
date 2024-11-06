@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengaturan_quizzes', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->string('nama_quizz');
             $table->string('mata_pelajaran');
             $table->string('kelas');
             $table->string('bahasa');
-            $table->string('visibilitas');
             $table->string('gambar_profil');
             $table->timestamps();
         });

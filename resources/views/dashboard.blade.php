@@ -8,39 +8,43 @@
     <title>Quizz</title>
 </head>
 <body class="bg-teal-700">
-    <div class="navbar sticky bg-teal-700 p-6 top-0 left-0 w-full z-10 shadow-lg">
+    
+    <x-navbar>
         <a href="{{ route('dashboard') }}">
-            <div class="container flex">
-                <h1 class="text-4xl font-bold ml-10 text-white align-center items-center py-2 pr-2">Quizi</h1>
-                <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="size-16 object-cover aspect-square align-center items-center py-2">
-            </div>
-        </a>
-    </div>
+        <div class="container flex">
+            <h1 class="text-4xl font-bold ml-10 text-white align-center items-center py-2 pr-2">{{ $title }}</h1>
+            <img src="{{ asset('storage/images/Frog_logo.png') }}" alt="" class="size-16 object-cover aspect-square align-center items-center py-2">
+        </div>
+    </a>
+</x-navbar>
+
     <div class="container mx-auto p-4 rounded-lg mt-10 ">
         <div class="flex flex-row w-full">
-            <div class="  w-3/4">
+            <div class="w-3/4">
                 <div class="p-6 mx-5 rounded-lg shadow-sm h-auto bg-white">
                     <h1 class="text-3xl text-black font-bold">Selamat Datang di Quizi</h1>
                 </div>
 
                 <div class="p-6 mx-5 rounded-lg shadow-sm bg-white mt-5">
-                    <h1 class="text-xl font-semibold mb-5">Quiz terbaru</h1>
+                    <h1 class="text-2xl font-semibold mb-5">Quiz terbaru</h1>
 
-                    <div class="flex flex-col flex-wrap justify-around p-3">
+                    <div class="flex flex-row flex-wrap flex-start gap-2 p-3">
+                        @if ()
                         {{-- @forEach() --}}
-                        <a href="" class="rounded-lg bg-white border border-solid border-gray-400 flex flex-col max-w-64">
-                            <img src="{{ asset('storage/images/cover_test.jpg') }}" alt="" class="w-full aspect-video max-h-36 object-cover rounded-t-lg">
-                            <div class="w-full p-3.5">
-                                <div class="flex flex-row w-full justify-between ">
-                                    <span class="border rounded-full text-xs px-2">Pengetahuan Umum</span>
-                                    <span class="rounded-full border text-xs px-2">EN</span>
+                            <a href="" class="rounded-lg bg-white border border-solid border-gray-400 flex flex-col min-w-[17.5rem] max-w-[17.5rem]">
+                                <img src="{{ asset('storage/images/$') }}" alt="" class="w-full aspect-video max-h-36 object-cover rounded-t-lg">
+                                <div class="w-full p-3.5">
+                                    <div class="flex flex-row w-full justify-between ">
+                                        <span class="border rounded-full text-xs p-1 px-3">{{  }}</span>
+                                        <span class="rounded-full border text-xs p-1 px-3">{{  }}</span>
+                                    </div>
+                                    <h2 class="text-xl font-semibold my-2 text-ellipsis overflow-hidden whitespace-nowrap">{{  }}</h2>
+                                    <div class="text-sm text-gray-400">{{  }}</div>
                                 </div>
-                                    <h2 class="text-lg font-semibold my-2">Judul</h2>
-                                <div class="text-sm text-gray-400">Mata Pelajaran</div>
-                                    
-                            </div>
-                        </a>
+                            </a> 
                         {{-- @endForEach --}}
+                        @endif
+                        
                     </div>
                     
                     <div class="w-full flex">
