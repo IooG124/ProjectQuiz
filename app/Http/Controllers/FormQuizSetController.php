@@ -47,8 +47,19 @@ class FormQuizSetController extends Controller
             return redirect()->back()->withErrors(['gambar_profil' => 'Gagal mengupload gambar: ' . $e->getMessage()]);
         }
     }
+
     public function loadAll(){
         $quizzes = PengaturanQuiz::all();
         return view('/dashboard', compact('quizzes'))->with('title',"Quiz");
+    }
+
+
+
+
+
+    public function destroy(PengaturanQuiz $categoryQuiz)
+    {
+        PengaturanQuiz::destroy($categoryQuiz->id);
+        return redirect('/')->with('deleteCategoryQuiz', 'hapus Kategori Quiz berhasil');
     }
 }
