@@ -11,7 +11,7 @@ class FormQuizSetController extends Controller
     public function index()
     {
         return view('quiz.QuizSet',[
-            'title' => 'Pengaturan Quiz'
+            'title' => 'Pengaturan Quiz',
         ]);
     }
     public function store(Request $request)
@@ -30,6 +30,7 @@ class FormQuizSetController extends Controller
             $filename = time() . '_' . $file->getClientOriginalName();
             // simpan file di storage/public/images
             $path = $file->storeAs('public/images', $filename); 
+            $filenamenew = 'images/' . $filename;
 
             // Simpan path file di database
             $quiz = new PengaturanQuiz();
@@ -37,7 +38,7 @@ class FormQuizSetController extends Controller
             $quiz->mata_pelajaran = $request->input('mata_pelajaran');
             $quiz->kelas = $request->input('kelas');
             $quiz->bahasa = $request->input('bahasa');
-            $quiz->gambar_profil = $path;
+            $quiz->gambar_profil = $filenamenew;
 
             $quiz->save();
             return redirect()->route('dashboard');

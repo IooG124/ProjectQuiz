@@ -25,32 +25,47 @@
                     <h1 class="text-3xl text-black font-bold">Selamat Datang di Quizi</h1>
                 </div>
 
-                <div class="p-6 mx-5 rounded-lg shadow-sm bg-white mt-5">
-                    <h1 class="text-2xl font-semibold mb-5">Quiz terbaru</h1>
-
-                    <div class="flex flex-row flex-wrap flex-start gap-2 p-3">
-                        @if ()
-                        {{-- @forEach() --}}
-                            <a href="" class="rounded-lg bg-white border border-solid border-gray-400 flex flex-col min-w-[17.5rem] max-w-[17.5rem]">
-                                <img src="{{ asset('storage/images/$') }}" alt="" class="w-full aspect-video max-h-36 object-cover rounded-t-lg">
-                                <div class="w-full p-3.5">
-                                    <div class="flex flex-row w-full justify-between ">
-                                        <span class="border rounded-full text-xs p-1 px-3">{{  }}</span>
-                                        <span class="rounded-full border text-xs p-1 px-3">{{  }}</span>
-                                    </div>
-                                    <h2 class="text-xl font-semibold my-2 text-ellipsis overflow-hidden whitespace-nowrap">{{  }}</h2>
-                                    <div class="text-sm text-gray-400">{{  }}</div>
-                                </div>
-                            </a> 
-                        {{-- @endForEach --}}
-                        @endif
-                        
-                    </div>
-                    
-                    <div class="w-full flex">
-                        <a href="" class="text-sm italic text-gray-400 ml-auto mr-7 hover:underline">more quiz &raquo;</a>
-                    </div>
-                </div>
+                <table class="table-auto w-full">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 bg-gray-200">No</th>
+                            <th class="px-4 py-2 bg-gray-200">Gambar</th>
+                            <th class="px-4 py-2 bg-gray-200">Nama Quiz</th>
+                            <th class="px-4 py-2 bg-gray-200">Mapel</th>
+                            <th class="px-4 py-2 bg-gray-200">Kelas</th>
+                            <th class="px-4 py-2 bg-gray-200">Masuk</th>
+                            <th class="px-4 py-2 bg-gray-200">Ubah</th>
+                            <th class="px-4 py-2 bg-gray-200">Hapus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- @dump($quizzes) --}}
+                        @foreach ($quizzes as $quiz)
+                        <tr class="bg-gray-100 hover:bg-gray-200">
+                            <td class="border px-4 py-2">{{ $loop->iteration }}</td>
+                            <td class="border px-4 py-2">
+                                <img src="{{ asset('storage/' . $quiz->gambar_profil) }}" alt="" class="w-20 h-20 rounded-md">
+                            </td>
+                            <td class="border px-4 py-2">{{ $quiz->nama_quizz }}</td>
+                            <td class="border px-4 py-2">{{ $quiz->mata_pelajaran }}</td>
+                            <td class="border px-4 py-2">{{ $quiz->kelas }}</td>
+                            <td class="border px-4 py-2">
+                                <a href="{{ $quiz->id }}" class="text-yellow-500">Masuk</a>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <a href="{{ $quiz->id }}/edit" class="text-blue-500">Ubah</a>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <form action="{{ $quiz->id }}" method="post" class="inline deleteForm">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="button" class="text-red-500 hover:underline show_confirm">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
             <div class=" w-1/4">
                 <div class="flex bg-white p-6 rounded-lg shadow-sm flex-col justify-center align-middle">
