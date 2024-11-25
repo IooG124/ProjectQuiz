@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\PengaturanQuiz;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -10,9 +11,15 @@ class QuizController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($categoryquiz)
+    public function index($categoryQuizId)
     {
-        //
+        $quiz = PengaturanQuiz::with('quizzes')->findOrFail($categoryQuizId);
+        $quizzes = $quiz->quizzes;
+
+        return view('dashboard.quiz.index',[
+            'quiz' => $quiz,
+            'quizzes' => $quizzes,
+        ]);
     }
 
     /**
