@@ -1,5 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: "Urbanist", sans-serif;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    background-color: #2fb3e3;
+}
+
+.swiper-scrollbar {
+    background-color: #2fb3e3;
+}
+
+.swiper-scrollbar .swiper-scrollbar-drag {
+    background-color: #2fb3e3;
+}
+
+.container {
+    width: 90%;
+}
+
+.navbar-fixed {
+    @apply fixed  z-[9999];
+}
+
+.nav-class {
+    @apply xl:text-sm mx-3 lg:mx-4 xl:mx-6 flex py-2 z-50 text-black hover:text-secondary md:text-white md:text-xs xl:font-bold relative before:absolute before:bottom-0 before:h-[2px] before:w-0 md:before:bg-secondary before:transition-all group-hover:before:w-full;
+}
+
+.scale {
+    @apply transition-all duration-300 hover:scale-105 active:scale-105 brightness-95;
+}
+
+.scale-group {
+    @apply transition-all duration-300 group-hover:scale-105 group-active:scale-105 group-hover:brightness-95;
+}
+
+.overflow {
+    @apply overflow-hidden rounded-xl bg-white;
+}
+
+.overflow-gal {
+    @apply overflow-hidden rounded md:rounded-md xl:rounded-xl;
+}
+
+.img-menu {
+    @apply h-full w-full object-cover rounded transition-transform duration-300 hover:scale-110 md:rounded-md xl:rounded-xl;
+}
+
+.img-gallery {
+    @apply h-full w-full object-cover rounded md:rounded-md xl:rounded-xl transition-transform duration-300 hover:scale-105;
+}
+
+.service-box {
+    @apply w-[35%] sm:w-[18%];
+}
+
+.rotate-90 {
+    transform: rotate(90deg);
+}
+
+.color-service {
+    filter: invert(8%) sepia(39%) saturate(717%) hue-rotate(158deg)
+        brightness(100%) contrast(103%);
+}
+
+.notification-tab > .active {
+    @apply text-blue-500 border-b-blue-500 hover:text-blue-500;
+}
+.order-tab > .active {
+    @apply bg-blue-500 text-white hover:text-white;
+}
+.main.active {
+    @apply md:w-full md:ml-0;
+}
+
+.jantuk {
+    @apply overflow-x-auto;
+}
+
+.jantuk::-webkit-scrollbar {
+    display: none;
+}
+
+.dt-search > label {
+    @apply hidden;
+}
+
+.dt-layout-row {
+    @apply hidden;
+}
+
+.dt-search {
+    @apply hidden;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important; 
+    height: 40px !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 26px;
+  position: absolute;
+  top: 6px !important;
+  right: 4px !important;
+  width: 20px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  display: block;
+  padding-left: 12px !important;
+  padding-right: 20px;
+  @apply my-auto !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select2 {
+    @apply h-10;
+}
+
+.select2-container {
+    @apply h-10;
+}
+
+.selection {
+    @apply h-10 block;
+}

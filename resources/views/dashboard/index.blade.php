@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{-- <link rel="stylesheet" href="output.css"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
     <title>Quizz</title>
 </head>
@@ -50,16 +51,16 @@
                             <td class="border px-4 py-2">{{ $quiz->mata_pelajaran }}</td>
                             <td class="border px-4 py-2">{{ $quiz->kelas }}</td>
                             <td class="border px-4 py-2">
-                                <a href="{{ $quiz->id }}" class="text-yellow-500">Masuk</a>
+                                <a href="/{{ $quiz->id }}/quiz" class="text-yellow-500">Masuk</a>
                             </td>
                             <td class="border px-4 py-2">
-                                <a href="{{ $quiz->id }}/edit" class="text-blue-500">Ubah</a>
+                                <a href="/{{ $quiz->id }}/edit" class="text-blue-500">Ubah</a>
                             </td>
                             <td class="border px-4 py-2">
-                                <form action="{{ $quiz->id }}" method="post" class="inline deleteForm">
+                                <form id="delete-form-{{ $quiz->id }}" action="/{{ $quiz->id }}" method="post" class="inline deleteForm">
                                     @method('delete')
                                     @csrf
-                                    <button type="button" class="text-red-500 hover:underline show_confirm">Hapus</button>
+                                    <button type="button" onclick="confirmDelete({{ $quiz->id }})" class="text-red-500">Hapus</button>
                                 </form>
                             </td>
                         </tr>
@@ -79,6 +80,56 @@
             </div>
         </div>
     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+    @if (session('createSchedule'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('createSchedule') }}',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
+        </script>
+    @elseif (session('updateSchedule'))
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '{{ session('updateSchedule') }}',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        });
+    </script>    
+    @elseif (session('deleteCategoryQuiz'))
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: '{{ session('eleteCategoryQuiz') }}',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        });
+    </script>    
+    @endif
+
+    <script>
+        function confirmDelete(id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+                
+            }
+        });
+        }
+    </script>
 
     {{-- <script>
         const questionTypes = document.querySelectorAll('input[name="question-type"]');

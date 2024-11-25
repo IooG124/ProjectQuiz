@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pengaturan_quizzes_id')->constrained('pengaturan_quizzes')->onDelete('cascade');
+            $table->date('nama_soal');
+            $table->time('jawaban');
             $table->timestamps();
         });
     }
