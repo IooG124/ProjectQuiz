@@ -20,11 +20,12 @@
 
     <div class="container mx-auto p-4 rounded-lg mt-10 ">
         <div class="flex flex-row w-full">
-            <div class="w-3/4">
+            <div class="w-3/4 max-w-[3/4]">
                 <div class="p-6 mx-5 rounded-lg shadow-sm h-auto bg-white">
                     <h1 class="text-3xl text-black font-bold">Selamat Datang di Quizi</h1>
                 </div>
 
+                <div>
                 <table class="table-auto w-full">
                     <thead>
                         <tr>
@@ -66,6 +67,7 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
             </div>
             <div class=" w-1/4">
                 <div class="flex bg-white p-6 rounded-lg shadow-sm flex-col justify-center align-middle">
