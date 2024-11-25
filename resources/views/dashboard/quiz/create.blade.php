@@ -23,7 +23,7 @@
         <div class="flex flex-row w-full">
             <div class="w-3/4">
                 <div class="p-6 mx-5 rounded-lg shadow-sm h-auto bg-white">
-                    <h1 class="text-3xl text-black font-bold">Selamat Datang di Quizi</h1>
+                    <h1 class="text-3xl text-black font-bold">Selamat Datang di Quiz</h1>
                 </div>
 
                 <div class="p-4 xl:p-6">
@@ -33,40 +33,47 @@
                                 <h1 class="font-semibold text-lg">Lihat Quiz</h1>
                             </div>
                             <div class="jantuk">
-                                <form action="" method="" class="">
+                                <form action="/{{ $quiz->id }}/quiz" method="post" class="">
                                     @csrf
                                     <div class="w-full flex flex-wrap justify-between">
                                         <div class="w-[48.5%] mb-5">
-                                            <label for="nama_quizz" class="font-semibold text-base mb-4 block">Nama Quiz</label>
-                                            <input type="text" name="nama_quizz" id="nama_quizz"  value="{{ old('nama_quizz', $quiz->nama_quizz) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
-                                            @error('nama_quizz')
+                                            <label for="nama_soal" class="font-semibold text-base mb-4 block">Soal</label>
+                                            <input type="text" name="nama_soal" id="nama_soal"  value="{{ old('nama_soal') }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required/>
+                                            @error('nama_soal')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                                         <div class="w-[48.5%] mb-5">
-                                            <label for="mata_pelajaran" class="font-semibold text-base mb-4 block">Mata Pelajaran</label>
-                                            <input type="text" name="mata_pelajaran" id="mata_pelajaran"  value="{{ old('mata_pelajaran', $quiz->mata_pelajaran) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
-                                            @error('mata_pelajaran')
-                                                <div class="text-red-500 text-sm">
-                                                {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="w-[48.5%] mb-5">
-                                            <label for="kelas" class="font-semibold text-base mb-4 block">Kelas</label>
-                                            <input type="text" name="kelas" id="kelas"  value="{{ old('kelas', $quiz->kelas) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
-                                            @error('kelas')
-                                                <div class="text-red-500 text-sm">
-                                                {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="w-[48.5%] mb-5">
-                                            <label for="bahasa" class="font-semibold text-base mb-4 block">Bahasa</label>
-                                            <input type="text" name="bahasa" id="bahasa"  value="{{ old('bahasa', $quiz->bahasa) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
-                                            @error('bahasa')
+                                            <label for="jawaban" class="font-semibold text-base mb-4 block">Jawaban</label>
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" name="jawaban" value="A" required />
+                                                <label class="text-sm block">A.</label>
+                                            </div>
+                                            <input type="text" name="pilihan[A]" id="jawaban_a" value="{{ old('pilihan.A') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" name="jawaban" value="B" required />
+                                                <label class="text-sm block">B.</label>
+                                            </div>
+                                            <input type="text" name="pilihan[B]" id="jawaban_b" value="{{ old('pilihan.B') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" name="jawaban" value="C" required />
+                                                <label class="text-sm block">C.</label>
+                                            </div>
+                                            <input type="text" name="pilihan[C]" id="jawaban_c" value="{{ old('pilihan.C') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" name="jawaban" value="D" required />
+                                                <label class="text-sm block">D.</label>
+                                            </div>
+                                            <input type="text" name="pilihan[D]" id="jawaban_d" value="{{ old('pilihan.D') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            
+
+                                            
+                                            @error('jawaban')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}
                                                 </div>
@@ -75,39 +82,10 @@
                                         
                                     </div>
                                     <a href="/" class="p-3 inline-block text-sm rounded-lg bg-gray-500 text-white font-medium">kembali</a>
+                                    <button id="submitButton" type="submit" class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded">
+                                        Simpan
+                                    </button>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="px-4 py-2 xl:py-4 xl:px-6">
-                    <div class="">
-                        <div class="bg-white p-4 xl:px-6 border-2 border-gray-300 rounded-lg">
-                            <div class="flex justify-between mt-4 xl:mt-6 items-center mb-1 xl:mb-2">
-                                <h1 class="font-semibold text-lg">Data Quiz Detail</h1>
-                                <a href="/{{ $quiz->id }}/quiz/create" class="font-medium text-sm tracking-wide bg-blue-400 rounded-sm text-white px-4 py-2.5">Buat Quiz</a>
-                            </div>
-                            <div class="jantuk">
-                                <table id="example" data-ordering="false" class="table-auto w-full mx-6 md:mx-auto justify-center text-left mt-6">
-                                    <thead class="border-b-2 border-gray-300">
-                                        <tr class="justify-between">
-                                            <th class="font-semibold pr-6 py-3 text-[16px]"><p class="text-left">No</p></th>
-                                            <th class="font-semibold pr-6 py-3 text-[16px]"><p class="text-left">Soal</p></th>
-                                            <th class="font-semibold pr-6 py-3 text-[16px]"><p class="text-left">Jawaban</p></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($quizzes as $quiz)
-                                        <tr class="justify-between text-left">
-                                            <td class="pr-6 py-3 text-[16px]"><p class="text-left">{{  $loop->iteration }}</p></td>
-                                            <td class="pr-6 py-3 text-[16px]"><p class="text-left">{{  $quiz->nama_soal }}</p></td>
-                                            <td class="pr-6 py-3 text-[16px]"><p class="text-left">{{  $quiz->jawaban }}</p></td>
-                                            
-                                           
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
