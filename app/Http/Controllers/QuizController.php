@@ -25,17 +25,37 @@ class QuizController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($categoryQuizId)
     {
-        //
+        $quiz = PengaturanQuiz::with('quizzes')->findOrFail($categoryQuizId);
+
+        return view('dashboard.quiz.create',[
+            'quiz' => $quiz,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $categoryQuizId)
     {
-        //
+        $quiz = PengaturanQuiz::with('quizzes')->findOrFail($categoryQuizId);
+        // dd($request->all());
+        
+        $validatedData = $request->validate([   
+            'pengaturan_quizzes_id' => '',
+            'nama_soal' => 'required',
+            'jawaban' => 'required',
+        ]);
+        $validatedData['pengaturan_quizzes_id'] = $categoryQuizId;
+        $jawabanBenar = $request->pilihan[$validatedData['jawaban']];
+        $validatedData['jawaban'] = $request->jawaban .'. '. $jawabanBenar;
+
+        // dd($validatedData);
+        Quiz::create($validatedData);
+        return redirect("/$categoryQuizId/quiz")->with('updateCategoryQuiz', 'update Kategori Quiz berhasil');
+
+        
     }
 
     /**
