@@ -84,7 +84,7 @@
                     <div class="">
                         <div class="bg-white p-4 xl:px-6 border-2 border-gray-300 rounded-lg">
                             <div class="flex justify-between mt-4 xl:mt-6 items-center mb-1 xl:mb-2">
-                                <h1 class="font-semibold text-lg">Data Quiz Detaik</h1>
+                                <h1 class="font-semibold text-lg">Data Quiz Detail</h1>
                                 <a href="/{{ $quiz->id }}/quiz/create" class="font-medium text-sm tracking-wide bg-blue-400 rounded-sm text-white px-4 py-2.5">Buat Quiz</a>
                             </div>
                             <div class="jantuk">
