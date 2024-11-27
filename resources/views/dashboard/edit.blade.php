@@ -33,14 +33,14 @@
             @csrf
             <div class="mb-4">
                 <label for="nama" class="block text-gray-700 font-bold mb-2">Nama Quizz</label>
-                <input type="text" id="nama" name="nama_quizz" value="{{ old('nama_quizz', $quiz->nama_quizz) }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{ old('nama_quizz') }}" placeholder="Quizz belum berjudul. . .">
+                <input type="text" id="nama" name="nama_quizz" value="{{ old('nama_quizz', $quiz->nama_quizz) }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-inherit leading-tight focus:outline-none focus:shadow-outline" value="{{ old('nama_quizz') }}" placeholder="Quizz belum berjudul. . .">
                   @error('nama_quizz')
                     <span class="text-red-600 text-sm italic">Nama quiz wajib di isi</span>
                   @enderror
             </div>
             <div class="mb-4">
                 <label for="mataPelajaran" class="block text-gray-700 font-bold mb-2">Mata Pelajaran</label>
-                <select id="mataPelajaran" name="mata_pelajaran" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="mataPelajaran" name="mata_pelajaran" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-inherit leading-tight focus:outline-none focus:shadow-outline">
                   <option  value="{{ old('mata_pelajaran', $quiz->mata_pelajaran) }}">{{ $quiz->mata_pelajaran }}</option>
                   <option value="">Pilih Mata Pelajaran</option>
                   <option value="Matematika" {{ old('mata_pelajaran') == 'Matematika' ? 'selected' : '' }}>Matematika</option>
@@ -55,7 +55,7 @@
             </div>
             <div class="mb-4">
                 <label for="kelas" class="block text-gray-700 font-bold mb-2">Kelas</label>
-                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-inherit leading-tight focus:outline-none focus:shadow-outline">
                   <option value="{{ old('kelas', $quiz->kelas) }}">{{ $quiz->kelas }}</option>
                   <option value="VII" {{ old('kelas') == 'VII' ? 'selected' : '' }}>Kelas VII</option>
                   <option value="VIII" {{ old('kelas') == 'VIII' ? 'selected' : '' }}>Kelas VIII</option>
@@ -67,7 +67,7 @@
             </div>
             <div class="mb-4">
                 <label for="bahasa" class="block text-gray-700 font-bold mb-2">Bahasa</label>
-                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-inherit leading-tight focus:outline-none focus:shadow-outline">
                   <option value="{{ old('bahasa', $quiz->bahasa) }}">{{ $quiz->bahasa }}</option>
                   <option value="Indonesia" {{ old('bahasa') == 'Indonesia' ? 'selected' : '' }}>Indonesia</option>
                   <option value="English" {{ old('bahasa') == 'English' ? 'selected' : '' }}>English</option>

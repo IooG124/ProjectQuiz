@@ -38,7 +38,7 @@
                                     <div class="w-full flex flex-wrap justify-between">
                                         <div class="w-[48.5%] mb-5">
                                             <label for="nama_quizz" class="font-semibold text-base mb-4 block">Nama Quiz</label>
-                                            <input type="text" name="nama_quizz" id="nama_quizz"  value="{{ old('nama_quizz', $quiz->nama_quizz) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
+                                            <input type="text" name="nama_quizz" id="nama_quizz"  value="{{ old('nama_quizz', $quiz->nama_quizz) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black bg-inherit border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
                                             @error('nama_quizz')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}
@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="w-[48.5%] mb-5">
                                             <label for="mata_pelajaran" class="font-semibold text-base mb-4 block">Mata Pelajaran</label>
-                                            <input type="text" name="mata_pelajaran" id="mata_pelajaran"  value="{{ old('mata_pelajaran', $quiz->mata_pelajaran) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
+                                            <input type="text" name="mata_pelajaran" id="mata_pelajaran"  value="{{ old('mata_pelajaran', $quiz->mata_pelajaran) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black bg-inherit border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
                                             @error('mata_pelajaran')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}
@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="w-[48.5%] mb-5">
                                             <label for="kelas" class="font-semibold text-base mb-4 block">Kelas</label>
-                                            <input type="text" name="kelas" id="kelas"  value="{{ old('kelas', $quiz->kelas) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
+                                            <input type="text" name="kelas" id="kelas"  value="{{ old('kelas', $quiz->kelas) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black bg-inherit border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
                                             @error('kelas')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="w-[48.5%] mb-5">
                                             <label for="bahasa" class="font-semibold text-base mb-4 block">Bahasa</label>
-                                            <input type="text" name="bahasa" id="bahasa"  value="{{ old('bahasa', $quiz->bahasa) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
+                                            <input type="text" name="bahasa" id="bahasa"  value="{{ old('bahasa', $quiz->bahasa) }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black bg-inherit border-opacity-[16%]" placeholder="Masukkan Nama" required readonly/>
                                             @error('bahasa')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}

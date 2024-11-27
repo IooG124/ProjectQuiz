@@ -53,7 +53,7 @@
             </div>
             <div class="mb-4">
                 <label for="kelas" class="block text-gray-700 font-bold mb-2">Kelas</label>
-                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="kelas" name="kelas" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-inherit leading-tight focus:outline-none focus:shadow-outline">
                   <option value="">Pilih Kelas</option>
                   <option value="VII" {{ old('kelas') == 'VII' ? 'selected' : '' }}>Kelas VII</option>
                   <option value="VIII" {{ old('kelas') == 'VIII' ? 'selected' : '' }}>Kelas VIII</option>
@@ -65,7 +65,7 @@
             </div>
             <div class="mb-4">
                 <label for="bahasa" class="block text-gray-700 font-bold mb-2">Bahasa</label>
-                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="bahasa" name="bahasa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-inherit leading-tight focus:outline-none focus:shadow-outline">
                   <option value="">Pilih Bahasa</option>
                   <option value="Indonesia" {{ old('bahasa') == 'Indonesia' ? 'selected' : '' }}>Indonesia</option>
                   <option value="English" {{ old('bahasa') == 'English' ? 'selected' : '' }}>English</option>

@@ -38,7 +38,7 @@
                                     <div class="w-full flex flex-wrap justify-between">
                                         <div class="w-[48.5%] mb-5">
                                             <label for="nama_soal" class="font-semibold text-base mb-4 block">Soal</label>
-                                            <input type="text" name="nama_soal" id="nama_soal"  value="{{ old('nama_soal') }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Nama" required/>
+                                            <input type="text" name="nama_soal" id="nama_soal"  value="{{ old('nama_soal') }}" class="text-sm p-3 rounded-md w-full border-[1.5px] font-medium border-black bg-inherit border-opacity-[16%]" placeholder="Masukkan Nama" required/>
                                             @error('nama_soal')
                                                 <div class="text-red-500 text-sm">
                                                 {{ $message }}
@@ -51,25 +51,25 @@
                                                 <input type="radio" name="jawaban" value="A" required />
                                                 <label class="text-sm block">A.</label>
                                             </div>
-                                            <input type="text" name="pilihan[A]" id="jawaban_a" value="{{ old('pilihan.A') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            <input type="text" name="pilihan[A]" id="jawaban_a" value="{{ old('pilihan.A') }}" class="text-sm p-3 mt-1 mb-8 rounded-md w-full border-[1.5px] font-medium bg-inherit border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
                                             
                                             <div class="flex items-center gap-2">
                                                 <input type="radio" name="jawaban" value="B" required />
                                                 <label class="text-sm block">B.</label>
                                             </div>
-                                            <input type="text" name="pilihan[B]" id="jawaban_b" value="{{ old('pilihan.B') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            <input type="text" name="pilihan[B]" id="jawaban_b" value="{{ old('pilihan.B') }}" class="text-sm p-3 mt-1  mb-8 rounded-md w-full border-[1.5px] font-medium bg-inherit border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
                                             
                                             <div class="flex items-center gap-2">
                                                 <input type="radio" name="jawaban" value="C" required />
                                                 <label class="text-sm block">C.</label>
                                             </div>
-                                            <input type="text" name="pilihan[C]" id="jawaban_c" value="{{ old('pilihan.C') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            <input type="text" name="pilihan[C]" id="jawaban_c" value="{{ old('pilihan.C') }}" class="text-sm p-3 mt-1  mb-8 rounded-md w-full border-[1.5px] font-medium bg-inherit border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
                                             
                                             <div class="flex items-center gap-2">
                                                 <input type="radio" name="jawaban" value="D" required />
                                                 <label class="text-sm block">D.</label>
                                             </div>
-                                            <input type="text" name="pilihan[D]" id="jawaban_d" value="{{ old('pilihan.D') }}" class="text-sm p-3 mb-8 rounded-md w-full border-[1.5px] font-medium border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
+                                            <input type="text" name="pilihan[D]" id="jawaban_d" value="{{ old('pilihan.D') }}" class="text-sm p-3 mt-1  mb-8 rounded-md w-full border-[1.5px] font-medium bg-inherit border-black border-opacity-[16%]" placeholder="Masukkan Jawaban" required />
                                             
 
                                             
